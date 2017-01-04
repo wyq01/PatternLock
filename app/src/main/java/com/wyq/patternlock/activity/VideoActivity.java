@@ -89,8 +89,9 @@ public class VideoActivity extends BaseActivity {
             Field mIsFullScreen = mediaController.getClass().getDeclaredField("mIsFullScreen");
             mIsFullScreen.setAccessible(true);
             mIsFullScreen.set(mediaController, true);
+            mIsFullScreen.setAccessible(false);
 
-            Field mBackListener = mediaController.getClass().getDeclaredField("mBackListener");
+            Field mBackListener = mediaController.getClass().getField("mBackListener");
             mBackListener.setAccessible(true);
             mBackListener.set(mediaController, new View.OnClickListener() {
                 @Override
@@ -98,10 +99,12 @@ public class VideoActivity extends BaseActivity {
                     VideoActivity.this.finish();
                 }
             });
+            mBackListener.setAccessible(false);
 
-            Field mScaleListener = mediaController.getClass().getDeclaredField("mScaleListener");
+            Field mScaleListener = mediaController.getClass().getField("mScaleListener");
             mScaleListener.setAccessible(true);
             mScaleListener.set(mediaController, null);
+            mScaleListener.setAccessible(false);
         } catch (Exception e) {}
     }
 }

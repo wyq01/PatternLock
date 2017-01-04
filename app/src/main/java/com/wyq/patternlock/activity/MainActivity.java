@@ -39,6 +39,7 @@ public class MainActivity extends BaseActivity {
             public void onPatternDetected(List<MaterialLockView.Cell> pattern, String SimplePattern) {
                 if (!SimplePattern.equals(correctPattern)) {
                     materialLockView.setDisplayMode(MaterialLockView.DisplayMode.Wrong);
+
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -51,6 +52,13 @@ public class MainActivity extends BaseActivity {
                     intent.putExtra("title", "纸飞机");
                     intent.putExtra("url", "http://60.205.212.156:8080/static/p1.mp4");
                     startActivity(intent);
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            materialLockView.clearPattern();
+                        }
+                    }, 1000);
                 }
                 super.onPatternDetected(pattern, SimplePattern);
             }
