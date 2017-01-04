@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            materialLockView.setDisplayMode(MaterialLockView.DisplayMode.Animate);
+                            materialLockView.clearPattern();
                         }
                     }, 1000);
                 } else {
