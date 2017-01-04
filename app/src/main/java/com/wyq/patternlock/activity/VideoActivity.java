@@ -98,6 +98,10 @@ public class VideoActivity extends BaseActivity {
                     VideoActivity.this.finish();
                 }
             });
+
+            Field mScaleListener = mediaController.getClass().getDeclaredField("mScaleListener");
+            mScaleListener.setAccessible(true);
+            mScaleListener.set(mediaController, null);
         } catch (Exception e) {}
     }
 }
