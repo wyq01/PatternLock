@@ -18,13 +18,11 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        main.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
     }
 
     @Override
     protected void setStatusBar() {
-        super.setStatusBar();
         StatusBarUtil.setTransparent(this);
     }
+
 }
