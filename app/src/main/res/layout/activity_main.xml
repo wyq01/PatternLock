@@ -6,7 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/default_wallpaper"
-    tools:context="com.wyq.patternlock.MainActivity">
+    tools:context="com.wyq.patternlock.activity.MainActivity">
 
-
+    <com.wyq.patternlockview.MaterialLockView
+        android:id="@+id/pattern"
+        xmlns:lockview="http://schemas.android.com/apk/res-auto"
+        android:padding="20dp"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        lockview:CORRECT_COLOR="#fff"
+        lockview:LOCK_COLOR="#fff"
+        lockview:WRONG_COLOR="#ff0000"/>
 </RelativeLayout>

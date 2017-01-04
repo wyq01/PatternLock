@@ -439,12 +439,12 @@ public class MaterialLockView extends View {
     private String getSimplePattern(List<Cell> pattern) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Cell cell : pattern) {
-            stringBuilder.append(getSipmleCellPosition(cell));
+            stringBuilder.append(getSimpleCellPosition(cell));
         }
         return stringBuilder.toString();
     }
 
-    private String getSipmleCellPosition(Cell cell) {
+    private String getSimpleCellPosition(Cell cell) {
         if (cell == null)
             return "";
         switch (cell.row) {

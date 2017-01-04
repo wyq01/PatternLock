@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "com.wyq.patternlock"
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
+    compile project(':patternlockview')
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -28,6 +29,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.jaeger.statusbaruitl:library:1.3.2'
-    compile project(':patternlockview')
+    compile 'com.linsea:universalvideoview:1.1.0@aar'
     testCompile 'junit:junit:4.12'
 }
