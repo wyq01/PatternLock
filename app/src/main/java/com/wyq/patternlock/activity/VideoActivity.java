@@ -2,7 +2,9 @@ package com.wyq.patternlock.activity;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.universalvideoview.UniversalMediaController;
 import com.universalvideoview.UniversalVideoView;
@@ -91,20 +93,22 @@ public class VideoActivity extends BaseActivity {
             mIsFullScreen.set(mediaController, true);
             mIsFullScreen.setAccessible(false);
 
-            Field mBackListener = mediaController.getClass().getField("mBackListener");
-            mBackListener.setAccessible(true);
-            mBackListener.set(mediaController, new View.OnClickListener() {
+            Field mBackButton = mediaController.getClass().getDeclaredField("mBackButton");
+            mBackButton.setAccessible(true);
+            ImageButton backBtn = (ImageButton) mBackButton.get(mediaController);
+            backBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
                     VideoActivity.this.finish();
                 }
             });
-            mBackListener.setAccessible(false);
 
-            Field mScaleListener = mediaController.getClass().getField("mScaleListener");
-            mScaleListener.setAccessible(true);
-            mScaleListener.set(mediaController, null);
-            mScaleListener.setAccessible(false);
-        } catch (Exception e) {}
+            Field mScaleButton = mediaController.getClass().getDeclaredField("mScaleButton");
+            mScaleButton.setAccessible(true);
+            ImageButton scaleBtn = (ImageButton) mScaleButton.get(mediaController);
+            scaleBtn.setOnClickListener(null);
+        } catch (Exception e) {
+            Log.i("tag", e.toString());
+        }
     }
 }
